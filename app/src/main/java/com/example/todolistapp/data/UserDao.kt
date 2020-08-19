@@ -1,9 +1,6 @@
 package com.example.todolistapp.data
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface UserDao {
@@ -13,6 +10,9 @@ interface UserDao {
 
     @Query("SELECT * FROM users WHERE userId = userId")
     fun getUserById(userId: Long): User
+
+    @Update
+    fun upgradeUser(user: User)
 
     @Insert
     fun insertAll(vararg users: User)

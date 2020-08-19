@@ -1,9 +1,6 @@
 package com.example.todolistapp.data
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface TaskDao {
@@ -14,8 +11,11 @@ interface TaskDao {
     @Query("SELECT * FROM tasks WHERE userId IN (:userIds)")
     fun loadAllByUserId(userIds: IntArray): List<Task>
 
+    @Update
+    fun upgradeTask(task: Task)
+
     @Insert
-    fun insertAll(vararg tasks: Task)
+    fun insertAll(vararg tasks: List<Any>)
 
     @Delete
     fun delete(task: Task)

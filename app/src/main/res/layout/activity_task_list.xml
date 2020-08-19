@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<data>
+    <variable
+        name="taskListViewModel"
+        type="com.example.todolistapp.ui.activity.tasklist.TaskListViewModel"/>
+</data>
+<RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/taskRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.tasklist.TaskListActivity"
+    android:padding="5dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/taskRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/task_list_item" />
+
+    <Button
+        android:id="@+id/addTaskButton"
+        android:text="@string/add_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> taskListViewModel.showDialogAddNewTask()}"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
+    </layout>
